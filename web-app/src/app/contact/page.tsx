@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { pageVariants } from "@/mockData/variants";
 
 // Warm color palette
 const colors = {
@@ -22,27 +23,8 @@ const colors = {
   text: "#4A3A2C", // Dark warm brown
 };
 
-const pageVariants = {
-  initial: { opacity: 0, y: 50 },
-  in: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-  out: {
-    opacity: 0,
-    y: -50,
-    transition: {
-      duration: 0.6,
-      ease: "easeIn",
-    },
-  },
-};
 
-const ContactPage: React.FC = () => {
+export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -70,6 +52,7 @@ const ContactPage: React.FC = () => {
       <Box
         sx={{
           backgroundColor: colors.background,
+          backgroundImage: 'linear-gradient(45deg, #f0e5db 0%, #fff2d1 100%)',
           minHeight: "calc(100vh - 64px)",
           py: 8,
         }}
@@ -330,4 +313,3 @@ const ContactPage: React.FC = () => {
   );
 };
 
-export default ContactPage;

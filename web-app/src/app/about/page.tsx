@@ -33,9 +33,9 @@ export default function About() {
   return (
     <Box
       sx={{
-        backgroundColor: '#f8f3ee', // Warm, cozy background color
+        backgroundColor: '#FFF5E6', // Warm, cozy background color
         minHeight: '100vh',
-        backgroundImage: 'linear-gradient(45deg, #f8f3ee 0%, #fff5ea 100%)',
+        backgroundImage: 'linear-gradient(45deg, #f0e5db 0%, #fff2d1 100%)',
         pt: 8,
         pb: 12,
       }}

@@ -20,13 +20,9 @@ import { useSearchParams } from "next/navigation";
 import { sign } from "crypto";
 import { CartContext } from "@/components/page-layout";
 import { count } from "console";
+import { colors } from "@/mockData/site-colors";
 
-const colors = {
-  primary: "#8B4513", // Saddle Brown
-  secondary: "#D2691E", // Chocolate
-  background: "#FFF5E6", // Light warm background
-  text: "#4A3A2C", // Dark warm brown
-};
+
 
 export default function ShopPage({searchParams}: {searchParams: {filter: string | undefined}}) {
   const [shopItems, setShopItems] = useState<ShopItem[]>([]);

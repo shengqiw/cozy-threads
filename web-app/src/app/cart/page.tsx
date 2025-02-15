@@ -52,14 +52,20 @@ export default function CartPage() {
   const shipping = subtotal > 100 ? 0 : 9.99;
   const total = subtotal + tax + shipping;
 
-  const handleCheckout = () => {
-    const res = fetch("/api/checkout", {
+  const handleCheckout = async () => {
+    const res = await fetch("/api/checkout", {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         cartItems,
         total,
       }),
     });
+
+    const paymentRes = await res.json();
+    window.location.href = paymentRes.url
   };
 
   return (

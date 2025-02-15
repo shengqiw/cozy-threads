@@ -4,7 +4,7 @@ export type ShopItem = {
   category: "mens" | "womens" | "accessories";
   type: "sweater" | "blanket" | "crochet" | "scarf";
   price: number;
-  sizes?: string[];
+  sizes: string[];
   description: string;
   imageUrl: string;
   inStock: boolean;
@@ -62,7 +62,7 @@ export const shopItems: ShopItem[] = [
     category: "accessories",
     type: "blanket",
     price: 129.99,
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["Queen", "King"],
     description: "Hand-knitted chunky blanket for ultimate comfort.",
     imageUrl: "/images/item-5.png",
     inStock: true,
@@ -73,7 +73,7 @@ export const shopItems: ShopItem[] = [
     category: "accessories",
     type: "blanket",
     price: 79.99,
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["Queen", "King"],
     description: "Plush fleece blanket for cozy nights.",
     imageUrl: "/images/item-6.png",
     inStock: true,
@@ -85,7 +85,7 @@ export const shopItems: ShopItem[] = [
     category: "accessories",
     type: "crochet",
     price: 34.99,
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["default"],
     description: "Adorable hand-crocheted stuffed animal, ideal for children.",
     imageUrl: "/images/item-7.png",
     inStock: true,
@@ -96,7 +96,7 @@ export const shopItems: ShopItem[] = [
     category: "accessories",
     type: "crochet",
     price: 39.99,
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["default"],
     description: "Cool hand-crocheted Dragon.",
     imageUrl: "/images/item-8.png",
     inStock: true,

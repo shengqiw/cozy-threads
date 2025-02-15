@@ -15,14 +15,12 @@ import {
   InputLabel,
   FormControl,
 } from "@mui/material";
-import { ShopItem, shopItems } from "@/mockData/shopItems";
+import type { ShopItem } from "@/mockData/shopItems";
 import { useSearchParams } from "next/navigation";
 import { sign } from "crypto";
 import { CartContext } from "@/components/page-layout";
 import { count } from "console";
-// import { useCart } from '../context/CartContext';
 
-// Warm color palette
 const colors = {
   primary: "#8B4513", // Saddle Brown
   secondary: "#D2691E", // Chocolate
@@ -51,23 +49,21 @@ export default function ShopPage() {
     fetchItems();
   }, [filteredCategory]);
 
-  //   const { addToCart } = useCart();
-
   const handleAddToCart = (item: ShopItem) => {
-    console.log('added to cart', item);
-    if (!selectedSize[item.id]) alert("Please select a size.");
+    if (!selectedSize[item.id]) return alert("Please select a size.");
 
     const currentItem = {
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        size: selectedSize[item.id],
-        type: item.type,
-        count: cartItems[item.id] ? cartItems[item.id].count + 1 : 1
-    }
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      size: selectedSize[item.id],
+      type: item.type,
+      imageUrl: item.imageUrl,
+      count: cartItems[item.id] ? cartItems[item.id].count + 1 : 1,
+    };
     setCartItems({
-        ...cartItems,
-        [currentItem.id]: currentItem
+      ...cartItems,
+      [currentItem.id]: currentItem,
     });
   };
 
@@ -194,8 +190,7 @@ export default function ShopPage() {
                       {item.description}
                     </Typography>
                     <Box display={"flex"} gap={6} ml={2}>
-                      {/* Sizes if applicable */}
-                      {item.sizes && (
+                      
                         <FormControl sx={{ minWidth: 70 }}>
                           <InputLabel id="demo-simple-select-autowidth-label">
                             Size
@@ -217,7 +212,6 @@ export default function ShopPage() {
                             ))}
                           </Select>
                         </FormControl>
-                      )}
                       <Typography
                         variant="h6"
                         sx={{
@@ -240,7 +234,7 @@ export default function ShopPage() {
                         backgroundColor: colors.primary,
                         color: "white",
                         "&:hover": {
-                          backgroundColor: colors.secondary
+                          backgroundColor: colors.secondary,
                         },
                       }}
                     >

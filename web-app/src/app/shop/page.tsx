@@ -28,14 +28,13 @@ const colors = {
   text: "#4A3A2C", // Dark warm brown
 };
 
-export default function ShopPage() {
-  const searchParams = useSearchParams();
+export default function ShopPage({searchParams}: {searchParams: {filter: string | undefined}}) {
   const [shopItems, setShopItems] = useState<ShopItem[]>([]);
   const [selectedSize, setSelectedSize] = useState<{
     [key: string]: string;
   }>({});
   const [filteredCategory, setFilteredCategory] = useState<string>(
-    searchParams.get("filter") || ""
+    searchParams?.filter || ""
   );
   const [cartItems, setCartItems] = useContext(CartContext);
 

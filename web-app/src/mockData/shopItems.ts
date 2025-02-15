@@ -12,7 +12,7 @@ export type ShopItem = {
 
 export const shopItems: ShopItem[] = [
   {
-    id: "fe9269ff-ea9d-4dc4-8f7b-ffc9f857515e",
+    id: "price_1QspOKFEWYU7ZB6l3rBJgd9c",
     name: "Classic Wool Knit Sweater",
     category: "mens",
     type: "sweater",
@@ -24,7 +24,7 @@ export const shopItems: ShopItem[] = [
     inStock: true,
   },
   {
-    id: "0c0d287b-19c7-40db-9cd1-389f414fcfef",
+    id: "price_1QsnfEFEWYU7ZB6lhkvtI3di",
     name: "Cozy Cable Knit Pullover",
     category: "womens",
     type: "sweater",
@@ -35,7 +35,7 @@ export const shopItems: ShopItem[] = [
     inStock: true,
   },
   {
-    id: "b280f545-79c6-47f3-b4c5-a0d7e9165d6e",
+    id: "price_1QspRlFEWYU7ZB6lcsF78YaR",
     name: "Oversized Knit Cardigan",
     category: "womens",
     type: "sweater",
@@ -46,7 +46,7 @@ export const shopItems: ShopItem[] = [
     inStock: true,
   },
   {
-    id: "35f69f8c-f94f-4627-90ae-c62dfc82df51",
+    id: "price_1QspSgFEWYU7ZB6lBG4j5CsM",
     name: "Soft Turtleneck Sweater",
     category: "mens",
     type: "sweater",
@@ -57,7 +57,7 @@ export const shopItems: ShopItem[] = [
     inStock: true,
   },
   {
-    id: "90e909cb-d6a3-4eef-8c20-69ab52a82e9e",
+    id: "price_1QspTFFEWYU7ZB6lbapLx45Q",
     name: "Chunky Knit Throw Blanket",
     category: "accessories",
     type: "blanket",
@@ -68,7 +68,7 @@ export const shopItems: ShopItem[] = [
     inStock: true,
   },
   {
-    id: "1dddfb08-168d-4efc-865a-84d0f9737c99",
+    id: "price_1QspTkFEWYU7ZB6lRirqx05C",
     name: "Soft Fleece Throw",
     category: "accessories",
     type: "blanket",
@@ -80,7 +80,7 @@ export const shopItems: ShopItem[] = [
   },
 
   {
-    id: "13729da4-fd76-4587-93f2-c3173dd9ce05",
+    id: "price_1QspUPFEWYU7ZB6lgIQ8PQi4",
     name: "Handmade Crochet Bear",
     category: "accessories",
     type: "crochet",
@@ -91,7 +91,7 @@ export const shopItems: ShopItem[] = [
     inStock: true,
   },
   {
-    id: "0dfd6462-c5a7-4cde-a098-8d8e13b41297",
+    id: "price_1QspUqFEWYU7ZB6luTGxNONM",
     name: "Crochet Dragon Toy",
     category: "accessories",
     type: "crochet",

@@ -11,13 +11,15 @@ export async function POST(request: Request) {
 
   if (!body.cartItems || !Object.keys(body.cartItems).length)
     throw new Error("No items in cart");
-
+  console.log('cartItems', body.cartItems);
   try {
     const headersList = await headers();
     const origin = headersList.get("origin");
     if (!stripe)
       throw new Error("Stripe is not configured properly. Check missing key");
     // Create Checkout Sessions from body params.
+
+    console.log('creating new session')
     const session = await stripe.checkout.sessions.create({
       line_items: (Object.values(body.cartItems) as CartItem[]).map(
         (item: CartItem) => ({

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import {
   Box,
@@ -10,8 +10,11 @@ import {
   Badge,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { CartContext } from ".";
+import { Person } from "@mui/icons-material";
 
 export const MonitorNav = () => {
+  const [cartItems] = useContext(CartContext);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -33,6 +36,10 @@ export const MonitorNav = () => {
     { text: "My Orders", href: "/orders" },
     { text: "Logout", href: "/logout" },
   ];
+
+  const cartTotal = Object.values(cartItems).reduce((acc, item) => {
+    return acc + item.count;
+  }, 0);
 
   return (
     <Box sx={{ display: "flex", gap: 4, alignItems: "center" }}>
@@ -56,7 +63,7 @@ export const MonitorNav = () => {
         aria-expanded={open ? "true" : undefined}
       >
         <Avatar sx={{ width: 32, height: 32, backgroundColor: "#333333" }}>
-          U
+          <Person />
         </Avatar>
       </IconButton>
       <IconButton
@@ -71,7 +78,7 @@ export const MonitorNav = () => {
         }}
       >
         <Badge
-          badgeContent={0}
+          badgeContent={cartTotal}
           color="error"
           overlap="circular"
           sx={{

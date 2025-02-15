@@ -11,7 +11,6 @@ export async function POST(request: Request) {
 
   if (!body.cartItems || !Object.keys(body.cartItems).length)
     throw new Error("No items in cart");
-  console.log('cartItems', body.cartItems);
   try {
     const headersList = await headers();
     const origin = headersList.get("origin");

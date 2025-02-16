@@ -24,6 +24,11 @@ export async function POST(request: Request) {
         (item: CartItem) => ({
           price: item.id,
           quantity: item.count,
+          details: {
+            size: item.size,
+            type: item.type,
+            imageUrl: item.imageUrl,
+          }
         })
       ),
       mode: "payment",

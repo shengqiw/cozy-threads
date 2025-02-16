@@ -33,8 +33,10 @@ export const MonitorNav = () => {
   ];
 
   const profileMenuItems = [
-    { text: "My Orders", href: "/orders" },
-    { text: "Logout", href: "/logout" },
+    // Would call stripe API to find all all orders for user to display a list 
+    { text: "My Orders", href: "/" },
+    // actual signout url would be applied here or use NextAuth Signout function
+    { text: "Logout", href: "/" }, 
   ];
 
   const cartTotal = Object.values(cartItems).reduce((acc, item) => {

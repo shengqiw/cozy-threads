@@ -34,6 +34,7 @@ export const PageLayout = ({ children }: ReactChild) => {
     {}
   );
 
+  //<SessionProvider> {children} <SessionProvider> would wrap this entire component
   return (
     <CartContext.Provider value={[cartItems, setCartItems]}>
       <Box
@@ -105,6 +106,7 @@ export const PageLayout = ({ children }: ReactChild) => {
         </Box>
       </Box>
     </CartContext.Provider>
+
   );
 };
 

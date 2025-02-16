@@ -16,10 +16,6 @@ import { MobileNav } from "./mobile-nav";
 import { ReactChild } from "@/types/generic-props";
 import { CartItem } from "@/types/cart";
 
-interface PageLayoutProps {
-  children: React.ReactNode;
-  brandName?: string;
-}
 export const CartContext = React.createContext<
   [
     { [key: string]: CartItem },
@@ -109,5 +105,3 @@ export const PageLayout = ({ children }: ReactChild) => {
 
   );
 };
-
-export default PageLayout;

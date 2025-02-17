@@ -23,12 +23,7 @@ export async function POST(request: Request) {
       line_items: (Object.values(body.cartItems) as CartItem[]).map(
         (item: CartItem) => ({
           price: item.id,
-          quantity: item.count,
-          details: {
-            size: item.size,
-            type: item.type,
-            imageUrl: item.imageUrl,
-          }
+          quantity: item.count
         })
       ),
       mode: "payment",

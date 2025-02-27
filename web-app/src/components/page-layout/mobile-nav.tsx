@@ -26,9 +26,8 @@ export const MobileNav = () => {
   ];
 
   const profileLinks = [
-    { text: 'Profile', href: '/profile' },
-    { text: 'My Orders', href: '/orders' },
-    { text: 'Settings', href: '/settings' },
+    // { text: 'Profile', href: '/profile' },
+    { text: 'Cart', href: '/cart' },
     { text: 'Logout', href: '/logout' }
   ];
 

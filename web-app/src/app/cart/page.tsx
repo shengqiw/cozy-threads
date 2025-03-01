@@ -20,6 +20,7 @@ import {
 import { motion } from "framer-motion";
 import { CartContext } from "@/components/page-layout";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 // Consistent color palette
 const colors = {
@@ -30,42 +31,47 @@ const colors = {
   highlight: "#FF6B35", // Vibrant orange for accents
 };
 
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  imageUrl?: string;
-}
 
 export default function CartPage() {
+  const router = useRouter();
+
   const [cartItems, setCartItems] = React.useContext(CartContext);
 
   let totalItems = 0;
   // Calculate totals
   const subtotal = Object.entries(cartItems).reduce((acc, [id, item]) => {
-    totalItems += item.count;
-    return acc + item.price * item.count;
+    totalItems += item.quantity;
+    return acc + item.price * item.quantity;
   }, 0);
-  console.log("subtotal", subtotal);
+  // console.log("subtotal", subtotal);
   const tax = subtotal * 0.08; // 8% tax example
   const shipping = subtotal > 100 ? 0 : 9.99;
   const total = subtotal + tax + shipping;
 
   const handleCheckout = async () => {
-    const res = await fetch("/api/checkout", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        cartItems,
-        total,
-      }),
-    });
+    // This way allows for the cart to be passed to Stripe 
+    // const res = await fetch("/api/checkout", {
+    //   method: "POST",
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     cartItems,
+    //     total,
+    //   }),
+    // });
 
-    const paymentRes = await res.json();
-    window.location.href = paymentRes.url
+    // const paymentRes = await res.json();
+    // window.location.href = paymentRes.url
+
+    //This way to satisfy the take home assignment but need to be secured... 
+
+    const cartObj = new URLSearchParams({
+      cartItems: JSON.stringify(cartItems),
+      total: total.toString()
+    }).toString();
+    router.push(`/checkout?${cartObj}`);
+
   };
 
   return (
@@ -205,7 +211,7 @@ export default function CartPage() {
                                 ...cartItems,
                                 [item.id]: {
                                   ...item,
-                                  count: !item.count ? 0 : item.count - 1,
+                                  quantity: !item.quantity ? 0 : item.quantity - 1,
                                 },
                               })
                             }
@@ -222,7 +228,7 @@ export default function CartPage() {
                             variant="outlined"
                             type="number"
                             sx={{ marginRight: "auto" }}
-                            value={item.count}
+                            value={item.quantity}
                             onChange={(e) => {
                               const newQty = parseInt(e.target.value, 10);
 
@@ -236,7 +242,7 @@ export default function CartPage() {
                                   ...cartItems,
                                   [item.id]: {
                                     ...item,
-                                    count: newQty,
+                                    quantity: newQty,
                                   },
                                 });
                               }
@@ -258,7 +264,7 @@ export default function CartPage() {
                                 ...cartItems,
                                 [item.id]: {
                                   ...item,
-                                  count: item.count >= 20 ? 20 : item.count + 1,
+                                  quantity: item.quantity >= 20 ? 20 : item.quantity + 1,
                                 },
                               })
                             }
@@ -287,7 +293,7 @@ export default function CartPage() {
                               fontWeight: 600,
                             }}
                           >
-                            ${(item.price * item.count).toFixed(2)}
+                            ${(item.price * item.quantity).toFixed(2)}
                           </Typography>
 
                           <IconButton

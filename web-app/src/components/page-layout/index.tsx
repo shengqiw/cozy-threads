@@ -14,7 +14,7 @@ import Link from "next/link";
 import { MonitorNav } from "./monitor-nav";
 import { MobileNav } from "./mobile-nav";
 import { ReactChild } from "@/types/generic-props";
-import { CartItem } from "@/types/cart";
+import type{ CartItem } from "@/types/cart";
 
 export const CartContext = React.createContext<
   [

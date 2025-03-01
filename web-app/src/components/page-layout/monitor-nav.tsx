@@ -40,7 +40,7 @@ export const MonitorNav = () => {
   ];
 
   const cartTotal = Object.values(cartItems).reduce((acc, item) => {
-    return acc + item.count;
+    return acc + item.quantity;
   }, 0);
 
   return (

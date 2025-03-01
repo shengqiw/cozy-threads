@@ -16,10 +16,7 @@ import {
   FormControl,
 } from "@mui/material";
 import type { ShopItem } from "@/mockData/shopItems";
-import { useSearchParams } from "next/navigation";
-import { sign } from "crypto";
 import { CartContext } from "@/components/page-layout";
-import { count } from "console";
 import { colors } from "@/mockData/site-colors";
 
 
@@ -54,7 +51,7 @@ export default function ShopPage({searchParams}: {searchParams: {filter: string 
       size: selectedSize[item.id],
       type: item.type,
       imageUrl: item.imageUrl,
-      count: cartItems[item.id] ? cartItems[item.id].count + 1 : 1,
+      quantity: cartItems[item.id] ? cartItems[item.id].quantity + 1 : 1,
     };
     setCartItems({
       ...cartItems,
